@@ -2,9 +2,9 @@ namespace Tracker.Domain.Events
 {
     public sealed record Event
     {
-        public required string EventName { get; init; }
-        public required DateTime EventTimestamp { get; init; }
-        public required string EventSource { get; init; }
+        public string EventName { get; init; }
+        public DateTime EventTimestamp { get; init; }
+        public string EventSource { get; init; }
 
         public Event(string eventName, DateTime eventTimestamp, string eventSource)
         {

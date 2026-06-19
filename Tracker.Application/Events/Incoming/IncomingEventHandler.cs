@@ -1,5 +1,6 @@
 using MediatR;
 using Tracker.Application.Events.Repository;
+using Tracker.Domain.Events;
 
 namespace Tracker.Application.Events.Incoming
 {
@@ -12,7 +13,11 @@ namespace Tracker.Application.Events.Incoming
             IncomingEventCommand command,
             CancellationToken cancellationToken)
         {
-            // TODO: use case orchestration here
+            Event incomingEvent = command.IntoEvent();
+
+            Console.WriteLine(incomingEvent);
+
+            await _eventsRepository.SaveAsync(incomingEvent, cancellationToken);
 
             return new IncomingEventResult
             {
