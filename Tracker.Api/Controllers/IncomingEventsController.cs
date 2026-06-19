@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Tracker.Application.Events.Incoming;
+using Tracker.Api.Requests;
+using Tracker.Api.Responses;
 
 namespace Tracker.Api.Controllers
 {
@@ -11,10 +12,13 @@ namespace Tracker.Api.Controllers
         private readonly ISender _sender = sender;
 
         [HttpPost]
-        public async Task<IActionResult> PostNewEvent(IncomingEventCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> PostNewEvent(IncomingEventsRequest request, CancellationToken cancellationToken)
         {
+            var command = request.IntoCommand();
             var result = await _sender.Send(command, cancellationToken);
-            return Ok(result);
+
+            var response = IncomingEventsResponse.FromResult(result);
+            return Ok(response);
         }
     }
 }

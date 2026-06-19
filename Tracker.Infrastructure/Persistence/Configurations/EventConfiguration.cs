@@ -10,6 +10,7 @@ namespace Tracker.Infrastructure.Persistence.Configurations
         {
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Id).HasColumnName("id");
+            builder.Property(p => p.CreatedAt).HasColumnName("created_at").HasDefaultValueSql("CURRENT_TIMESTAMP").IsRequired();
             builder.Property(p => p.EventName).HasColumnName("event_name").HasMaxLength(200).IsRequired();
             builder.Property(p => p.EventSource).HasColumnName("event_source").HasMaxLength(200).IsRequired();
             builder.Property(p => p.EventTimestamp).HasColumnName("event_timestamp").IsRequired();

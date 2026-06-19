@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Tracker.Infrastructure.Persistence;
@@ -11,9 +12,11 @@ using Tracker.Infrastructure.Persistence;
 namespace Tracker.Infrastructure.Migrations
 {
     [DbContext(typeof(TrackerDbContext))]
-    partial class TrackerDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260619145348_UpdateCreatedAtColumn")]
+    partial class UpdateCreatedAtColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

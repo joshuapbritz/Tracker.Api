@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Tracker.Domain.Events
 {
     public sealed record Event
@@ -5,6 +7,7 @@ namespace Tracker.Domain.Events
         public Guid Id { get; init; }
         public string EventName { get; init; }
         public DateTime EventTimestamp { get; init; }
+        public DateTime CreatedAt { get; init; }
         public string EventSource { get; init; }
 
         public Event(string eventName, DateTime eventTimestamp, string eventSource)

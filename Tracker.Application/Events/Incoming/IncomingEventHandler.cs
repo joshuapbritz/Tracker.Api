@@ -14,9 +14,6 @@ namespace Tracker.Application.Events.Incoming
             CancellationToken cancellationToken)
         {
             Event incomingEvent = command.IntoEvent();
-
-            Console.WriteLine(incomingEvent);
-
             await _eventsRepository.SaveAsync(incomingEvent, cancellationToken);
 
             return new IncomingEventResult

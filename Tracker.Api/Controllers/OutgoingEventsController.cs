@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Tracker.Application.Events.Outgoing;
+using Tracker.Api.Responses;
 
 namespace Tracker.Api.Controllers
 {
@@ -14,7 +15,9 @@ namespace Tracker.Api.Controllers
         public async Task<IActionResult> GetAllEvents(CancellationToken cancellationToken)
         {
             var result = await _sender.Send(new OutgoingEventsQuery(), cancellationToken);
-            return Ok(result.EventsList);
+
+            var response = OutgoingEventsResponse.FromResult(result);
+            return Ok(response);
         }
     }
 }
