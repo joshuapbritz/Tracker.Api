@@ -1,0 +1,33 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tracker-api
+    ports:
+      - "5000:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__TrackerDb: Host=db;Port=5432;Database=tracker;Username=trckusr;Password=password
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:18
+    container_name: tracker-api-db
+    environment:
+      POSTGRES_DB: tracker
+      POSTGRES_USER: trckusr
+      POSTGRES_PASSWORD: password
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U trckusr"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    ports:
+      - "5432:5432"
+    volumes:
+      - tracker-api-db-postgres-data:/var/lib/postgresql
+volumes:
+  tracker-api-db-postgres-data:

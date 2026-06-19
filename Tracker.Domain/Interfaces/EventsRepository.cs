@@ -1,6 +1,6 @@
 using Tracker.Domain.Events;
 
-namespace Tracker.Application.Events.Repository
+namespace Tracker.Domain.Interfaces
 {
     public interface IEventsRepository
     {

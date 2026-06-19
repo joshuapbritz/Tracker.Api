@@ -1,6 +1,6 @@
 using MediatR;
-using Tracker.Application.Events.Repository;
 using Tracker.Domain.Events;
+using Tracker.Domain.Interfaces;
 
 namespace Tracker.Application.Events.Incoming
 {
@@ -14,9 +14,6 @@ namespace Tracker.Application.Events.Incoming
             CancellationToken cancellationToken)
         {
             Event incomingEvent = command.IntoEvent();
-
-            Console.WriteLine(incomingEvent);
-
             await _eventsRepository.SaveAsync(incomingEvent, cancellationToken);
 
             return new IncomingEventResult
