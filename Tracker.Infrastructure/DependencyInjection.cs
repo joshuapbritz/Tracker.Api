@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Tracker.Domain.Interfaces;
+using Tracker.Application.Abstractions;
 using Tracker.Infrastructure.Persistence;
 using Tracker.Infrastructure.Persistence.Repositories;
 

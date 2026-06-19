@@ -1,4 +1,4 @@
-using Tracker.Domain.Interfaces;
+using Tracker.Application.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Tracker.Domain.Events;
 

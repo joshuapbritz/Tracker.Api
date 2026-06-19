@@ -20,6 +20,7 @@ namespace Tracker.Domain.Events
             EventName = eventName;
             EventTimestamp = eventTimestamp;
             EventSource = eventSource;
+            CreatedAt = DateTime.UtcNow;
         }
     }
 }

@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using Tracker.Application.Events.Incoming;
 
-namespace Tracker.Api.Requests
+namespace Tracker.Api.Contracts.Requests
 {
     public sealed record IncomingEventsRequest
     {

@@ -1,6 +1,6 @@
 using Tracker.Application.Events.Incoming;
 
-namespace Tracker.Api.Responses
+namespace Tracker.Api.Contracts.Responses
 {
     public sealed record IncomingEventsResponse
     {

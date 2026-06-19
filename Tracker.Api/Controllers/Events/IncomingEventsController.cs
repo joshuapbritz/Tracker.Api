@@ -1,9 +1,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Tracker.Api.Requests;
-using Tracker.Api.Responses;
+using Tracker.Api.Contracts.Requests;
+using Tracker.Api.Contracts.Responses;
 
-namespace Tracker.Api.Controllers
+namespace Tracker.Api.Controllers.Events
 {
     [ApiController]
     [Route("api/incoming-events")]

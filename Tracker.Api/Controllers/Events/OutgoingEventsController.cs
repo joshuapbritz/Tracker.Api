@@ -1,9 +1,9 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Tracker.Application.Events.Outgoing;
-using Tracker.Api.Responses;
+using Tracker.Api.Contracts.Responses;
 
-namespace Tracker.Api.Controllers
+namespace Tracker.Api.Controllers.Events
 {
     [ApiController]
     [Route("api/outgoing-events")]
