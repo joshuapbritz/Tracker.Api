@@ -1,20 +1,19 @@
 using Tracker.Application.Events.Incoming;
-using Tracker.Application.Events.Repository;
-using Tracker.Infrastructure.Persistence;
+using Tracker.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-
-builder.Services.AddControllers();
-builder.Services.AddSingleton<IEventsRepository, InMemoryEventsRepository>();
-
 builder.Services.AddMediatR(cfg =>
 {
     cfg.RegisterServicesFromAssembly(typeof(IncomingEventHandler).Assembly);
 });
+
+// Configure app services
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
