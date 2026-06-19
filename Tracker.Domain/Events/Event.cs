@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace Tracker.Domain.Events
 {
     public sealed record Event
