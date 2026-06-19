@@ -1,3 +1,4 @@
+using MediatR;
 
 namespace Tracker.Application.Events.Incoming
 {

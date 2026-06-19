@@ -1,3 +1,5 @@
+using Tracker.Domain.Events;
+
 namespace Tracker.Application.Events.Repository
 {
     public interface IEventsRepository

@@ -1,3 +1,6 @@
+using MediatR;
+using Tracker.Application.Events.Repository;
+
 namespace Tracker.Application.Events.Incoming
 {
     public sealed class IncomingEventHandler(IEventsRepository eventsRepository)
