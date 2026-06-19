@@ -8,7 +8,7 @@ namespace Tracker.Infrastructure.Persistence.Repositories
     {
         private readonly TrackerDbContext _context = context;
 
-        public async Task<IReadOnlyList<TrackerEvent>> GetLatestWithPagingAsync(int skip, int take, CancellationToken cancellationToken)
+        public async Task<IReadOnlyList<TrackerEvent>> GetLatestAsync(int skip, int take, CancellationToken cancellationToken)
         {
             return await _context.Events.OrderByDescending(e => e.EventTimestamp).Skip(skip).Take(take).ToListAsync(cancellationToken);
         }

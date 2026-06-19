@@ -14,7 +14,7 @@ namespace Tracker.Application.Events.Outgoing
             CancellationToken cancellationToken)
         {
             // TODO: Skip and take hard-coded for now, but will be updated down the line
-            IReadOnlyList<TrackerEvent> events = await _eventsRepository.GetLatestWithPagingAsync(0, 20, cancellationToken);
+            IReadOnlyList<TrackerEvent> events = await _eventsRepository.GetLatestAsync(0, 20, cancellationToken);
 
             return new OutgoingEventsResult
             {
