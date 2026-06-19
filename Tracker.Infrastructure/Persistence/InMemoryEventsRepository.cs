@@ -7,6 +7,11 @@ namespace Tracker.Infrastructure.Persistence
     {
         private List<Event> _events = new List<Event>();
 
+        public Task<List<Event>> GetAsync(CancellationToken cancellationToken)
+        {
+            return Task.FromResult(_events);
+        }
+
         public async Task SaveAsync(Event incomingEvent, CancellationToken cancellationToken)
         {
             _events.Add(incomingEvent);

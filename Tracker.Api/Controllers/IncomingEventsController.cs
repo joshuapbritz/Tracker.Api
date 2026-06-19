@@ -11,7 +11,7 @@ namespace Tracker.Api.Controllers
         private readonly ISender _sender = sender;
 
         [HttpPost]
-        public async Task<IActionResult> Post(IncomingEventCommand command, CancellationToken cancellationToken)
+        public async Task<IActionResult> PostNewEvent(IncomingEventCommand command, CancellationToken cancellationToken)
         {
             var result = await _sender.Send(command, cancellationToken);
             return Ok(result);
