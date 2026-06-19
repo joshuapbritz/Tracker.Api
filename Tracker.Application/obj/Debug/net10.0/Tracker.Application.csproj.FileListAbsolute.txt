@@ -1,0 +1,15 @@
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/bin/Debug/net10.0/Tracker.Application.deps.json
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/bin/Debug/net10.0/Tracker.Application.dll
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/bin/Debug/net10.0/Tracker.Application.pdb
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/bin/Debug/net10.0/Tracker.Domain.dll
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/bin/Debug/net10.0/Tracker.Domain.pdb
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/obj/Debug/net10.0/Tracker.Application.csproj.AssemblyReference.cache
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/obj/Debug/net10.0/Tracker.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/obj/Debug/net10.0/Tracker.Application.AssemblyInfoInputs.cache
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/obj/Debug/net10.0/Tracker.Application.AssemblyInfo.cs
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/obj/Debug/net10.0/Tracker.Application.csproj.CoreCompileInputs.cache
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/obj/Debug/net10.0/Tracker..309DBAE6.Up2Date
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/obj/Debug/net10.0/Tracker.Application.dll
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/obj/Debug/net10.0/refint/Tracker.Application.dll
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/obj/Debug/net10.0/Tracker.Application.pdb
+/Users/joshuabritz/Documents/learning/dn-api/Tracker.Application/obj/Debug/net10.0/ref/Tracker.Application.dll
