@@ -13,11 +13,18 @@ namespace Tracker.Application.Events.Outgoing
             OutgoingEventsQuery command,
             CancellationToken cancellationToken)
         {
-            List<Event> events = await _eventsRepository.GetAsync(cancellationToken);
+            // TODO: Skip and take hard-coded for now, but will be updated down the line
+            IReadOnlyList<TrackerEvent> events = await _eventsRepository.GetLatestWithPagingAsync(0, 20, cancellationToken);
 
             return new OutgoingEventsResult
             {
-                EventsList = events
+                EventsList = [.. events.Select(e => new OutgoingEventItem
+                {
+                    Id = e.Id,
+                    EventName = e.EventName,
+                    EventTimestamp = e.EventTimestamp,
+                    EventSource = e.EventSource
+                })]
             };
         }
     }

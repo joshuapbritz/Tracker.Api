@@ -5,7 +5,7 @@ namespace Tracker.Infrastructure.Persistence
 {
     public sealed class TrackerDbContext(DbContextOptions<TrackerDbContext> options) : DbContext(options)
     {
-        internal DbSet<Event> Events => Set<Event>();
+        internal DbSet<TrackerEvent> Events => Set<TrackerEvent>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

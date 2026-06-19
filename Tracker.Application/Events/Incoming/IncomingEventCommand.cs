@@ -1,4 +1,3 @@
-using System.Text.Json.Serialization;
 using MediatR;
 using Tracker.Domain.Events;
 
@@ -10,7 +9,7 @@ namespace Tracker.Application.Events.Incoming
         public required DateTime EventTimestamp { get; init; }
         public required string EventSource { get; init; }
 
-        public Event IntoEvent() => new(EventName, EventTimestamp, EventSource);
+        public TrackerEvent IntoEvent() => new(EventName, EventTimestamp, EventSource);
     }
 
 }

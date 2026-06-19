@@ -22,7 +22,7 @@ namespace Tracker.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Tracker.Domain.Events.Event", b =>
+            modelBuilder.Entity("Tracker.Domain.Events.TrackerEvent", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

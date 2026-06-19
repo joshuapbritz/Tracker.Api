@@ -1,14 +1,14 @@
 namespace Tracker.Domain.Events
 {
-    public sealed record Event
+    public sealed class TrackerEvent
     {
-        public Guid Id { get; init; }
-        public string EventName { get; init; }
-        public DateTime EventTimestamp { get; init; }
-        public DateTime CreatedAt { get; init; }
-        public string EventSource { get; init; }
+        public Guid Id { get; private init; }
+        public string EventName { get; private init; }
+        public DateTime EventTimestamp { get; private init; }
+        public DateTime CreatedAt { get; private init; }
+        public string EventSource { get; private init; }
 
-        public Event(string eventName, DateTime eventTimestamp, string eventSource)
+        public TrackerEvent(string eventName, DateTime eventTimestamp, string eventSource)
         {
             if (string.IsNullOrWhiteSpace(eventName))
                 throw new ArgumentException("Event name is required.", nameof(eventName));

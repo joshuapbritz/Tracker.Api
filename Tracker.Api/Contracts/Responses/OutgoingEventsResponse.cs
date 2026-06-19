@@ -16,7 +16,7 @@ namespace Tracker.Api.Contracts.Responses
 
     public sealed record OutgoingEventsResponse
     {
-        public required List<OutgoingEvent> Results { get; init; }
+        public required IReadOnlyList<OutgoingEvent> Results { get; init; }
 
         public static OutgoingEventsResponse FromResult(OutgoingEventsResult result)
         {

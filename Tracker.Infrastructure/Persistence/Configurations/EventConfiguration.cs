@@ -4,9 +4,9 @@ using Tracker.Domain.Events;
 
 namespace Tracker.Infrastructure.Persistence.Configurations
 {
-    public class EventConfiguration : IEntityTypeConfiguration<Event>
+    public class EventConfiguration : IEntityTypeConfiguration<TrackerEvent>
     {
-        public void Configure(EntityTypeBuilder<Event> builder)
+        public void Configure(EntityTypeBuilder<TrackerEvent> builder)
         {
             builder.HasKey(p => p.Id);
             builder.Property(p => p.Id).HasColumnName("id");

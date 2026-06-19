@@ -8,12 +8,12 @@ namespace Tracker.Infrastructure.Persistence.Repositories
     {
         private readonly TrackerDbContext _context = context;
 
-        public Task<List<Event>> GetAsync(CancellationToken cancellationToken)
+        public async Task<IReadOnlyList<TrackerEvent>> GetLatestWithPagingAsync(int skip, int take, CancellationToken cancellationToken)
         {
-            return _context.Events.OrderByDescending(e => e.EventTimestamp).Skip(0).Take(20).ToListAsync(cancellationToken);
+            return await _context.Events.OrderByDescending(e => e.EventTimestamp).Skip(skip).Take(take).ToListAsync(cancellationToken);
         }
 
-        public async Task SaveAsync(Event incomingEvent, CancellationToken cancellationToken)
+        public async Task SaveAsync(TrackerEvent incomingEvent, CancellationToken cancellationToken)
         {
             await _context.Events.AddAsync(incomingEvent, cancellationToken);
 

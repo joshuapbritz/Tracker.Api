@@ -13,7 +13,7 @@ namespace Tracker.Application.Events.Incoming
             IncomingEventCommand command,
             CancellationToken cancellationToken)
         {
-            Event incomingEvent = command.IntoEvent();
+            TrackerEvent incomingEvent = command.IntoEvent();
             await _eventsRepository.SaveAsync(incomingEvent, cancellationToken);
 
             return new IncomingEventResult
