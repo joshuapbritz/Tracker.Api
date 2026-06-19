@@ -24,8 +24,11 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+// Setup middleware
 app.UseHttpsRedirection();
 
+// Setup controllers
 app.MapControllers();
 
+// Run the application
 app.Run();
