@@ -1,6 +1,6 @@
 using MediatR;
-using Tracker.Application.Events.Repository;
 using Tracker.Domain.Events;
+using Tracker.Domain.Interfaces;
 
 namespace Tracker.Application.Events.Incoming
 {

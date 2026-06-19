@@ -2,6 +2,7 @@ namespace Tracker.Domain.Events
 {
     public sealed record Event
     {
+        public Guid Id { get; init; }
         public string EventName { get; init; }
         public DateTime EventTimestamp { get; init; }
         public string EventSource { get; init; }
@@ -14,6 +15,7 @@ namespace Tracker.Domain.Events
             if (string.IsNullOrWhiteSpace(eventSource))
                 throw new ArgumentException("Event source is required.", nameof(eventSource));
 
+            Id = Guid.NewGuid();
             EventName = eventName;
             EventTimestamp = eventTimestamp;
             EventSource = eventSource;

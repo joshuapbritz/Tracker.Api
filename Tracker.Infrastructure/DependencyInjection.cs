@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Tracker.Application.Events.Repository;
+using Tracker.Domain.Interfaces;
 using Tracker.Infrastructure.Persistence;
+using Tracker.Infrastructure.Persistence.Repositories;
 
 namespace Tracker.Infrastructure
 {
@@ -12,6 +13,12 @@ namespace Tracker.Infrastructure
             this IServiceCollection services,
             IConfiguration configuration)
         {
+            services.AddPersistence(configuration);
+            return services;
+        }
+
+        private static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
+        {
             var connectionString = configuration.GetConnectionString("TrackerDb");
 
             if (string.IsNullOrWhiteSpace(connectionString))
@@ -20,7 +27,7 @@ namespace Tracker.Infrastructure
             services.AddDbContext<TrackerDbContext>(options =>
                 options.UseNpgsql(connectionString));
 
-            services.AddScoped<IEventsRepository, EfCoreEventsRepository>();
+            services.AddScoped<IEventsRepository, EventsRepository>();
 
             return services;
         }

@@ -28,6 +28,6 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - tracker-api-db-postgres-data:/var/lib/postgresql/data
+      - tracker-api-db-postgres-data:/var/lib/postgresql
 volumes:
   tracker-api-db-postgres-data:
