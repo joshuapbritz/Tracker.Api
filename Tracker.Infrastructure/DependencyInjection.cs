@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Tracker.Application.Abstractions;
 using Tracker.Infrastructure.Persistence;
 using Tracker.Infrastructure.Persistence.Repositories;
+using Tracker.Infrastructure.Settings;
 
 namespace Tracker.Infrastructure
 {
@@ -13,7 +14,14 @@ namespace Tracker.Infrastructure
             this IServiceCollection services,
             IConfiguration configuration)
         {
+            services.AddSettings();
             services.AddPersistence(configuration);
+            return services;
+        }
+
+        private static IServiceCollection AddSettings(this IServiceCollection services)
+        {
+            services.AddSingleton<ISettingsProvider, SettingsProvider>();
             return services;
         }
 

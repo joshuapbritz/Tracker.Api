@@ -4,17 +4,21 @@ using Tracker.Application.Abstractions;
 
 namespace Tracker.Application.Events.Outgoing
 {
-    public sealed class OutgoingEventsHandler(IEventsRepository eventsRepository)
+    public sealed class OutgoingEventsHandler(ISettingsProvider settings, IEventsRepository eventsRepository)
                 : IRequestHandler<OutgoingEventsQuery, OutgoingEventsResult>
     {
         private readonly IEventsRepository _eventsRepository = eventsRepository;
+        private readonly ISettingsProvider _settings = settings;
 
         public async Task<OutgoingEventsResult> Handle(
             OutgoingEventsQuery command,
             CancellationToken cancellationToken)
         {
-            // TODO: Skip and take hard-coded for now, but will be updated down the line
-            IReadOnlyList<TrackerEvent> events = await _eventsRepository.GetLatestAsync(0, 20, cancellationToken);
+            int pageSize = command.PageSize ?? _settings.DefaultQueryOptions.PageSize;
+            int pageNumber = command.PageNumber ?? 1;
+            int skip = (pageNumber - 1) * pageSize;
+
+            IReadOnlyList<TrackerEvent> events = await _eventsRepository.GetLatestAsync(skip, pageSize, cancellationToken);
 
             return new OutgoingEventsResult
             {
