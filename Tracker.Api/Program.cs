@@ -1,3 +1,4 @@
+using Tracker.Api.Handlers;
 using Tracker.Application.Events.Incoming;
 using Tracker.Infrastructure;
 
@@ -12,6 +13,12 @@ builder.Services.AddMediatR(cfg =>
 });
 
 // Configure app services
+
+// Configure global exception handling
+builder.Services.AddProblemDetails();
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+
+// Configure our custom services
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddControllers();
 
@@ -24,6 +31,7 @@ if (app.Environment.IsDevelopment())
 }
 
 // Setup middleware
+app.UseExceptionHandler();
 app.UseHttpsRedirection();
 
 // Setup controllers
