@@ -2,6 +2,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Tracker.Application.Events.Outgoing;
 using Tracker.Api.Contracts.Responses;
+using Tracker.Api.Contracts.Requests;
 
 namespace Tracker.Api.Controllers.Events
 {
@@ -12,9 +13,9 @@ namespace Tracker.Api.Controllers.Events
         private readonly ISender _sender = sender;
 
         [HttpGet]
-        public async Task<IActionResult> GetAllEvents(CancellationToken cancellationToken)
+        public async Task<IActionResult> GetAllEvents([FromQuery] OutgoingEventsRequest request, CancellationToken cancellationToken)
         {
-            var result = await _sender.Send(new OutgoingEventsQuery(), cancellationToken);
+            var result = await _sender.Send(new OutgoingEventsQuery(request.PageNumber, request.PageSize), cancellationToken);
 
             var response = OutgoingEventsResponse.FromResult(result);
             return Ok(response);

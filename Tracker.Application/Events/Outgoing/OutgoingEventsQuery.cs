@@ -1,5 +1,4 @@
 using MediatR;
-using Tracker.Application.Abstractions;
 
 namespace Tracker.Application.Events.Outgoing
 {
@@ -7,5 +6,11 @@ namespace Tracker.Application.Events.Outgoing
     {
         public int? PageNumber { get; init; }
         public int? PageSize { get; init; }
+
+        public OutgoingEventsQuery(int? pageNumber, int? pageSize)
+        {
+            PageNumber = pageNumber;
+            PageSize = pageSize;
+        }
     };
 }
