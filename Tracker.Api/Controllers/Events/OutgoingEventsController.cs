@@ -15,7 +15,8 @@ namespace Tracker.Api.Controllers.Events
         [HttpGet]
         public async Task<IActionResult> GetAllEvents([FromQuery] OutgoingEventsRequest request, CancellationToken cancellationToken)
         {
-            var result = await _sender.Send(new OutgoingEventsQuery(request.PageNumber, request.PageSize), cancellationToken);
+            var command = request.IntoCommand();
+            var result = await _sender.Send(command, cancellationToken);
 
             var response = OutgoingEventsResponse.FromResult(result);
             return Ok(response);

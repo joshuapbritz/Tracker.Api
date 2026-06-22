@@ -1,6 +1,6 @@
-using Tracker.Application.Abstractions;
+using Tracker.Domain.Abstractions;
 using Microsoft.EntityFrameworkCore;
-using Tracker.Domain.Events;
+using Tracker.Domain.Entities.Events;
 
 namespace Tracker.Infrastructure.Persistence.Repositories
 {
@@ -16,8 +16,6 @@ namespace Tracker.Infrastructure.Persistence.Repositories
         public async Task SaveAsync(TrackerEvent incomingEvent, CancellationToken cancellationToken)
         {
             await _context.Events.AddAsync(incomingEvent, cancellationToken);
-
-            // TODO: learn more about error handling here
             await _context.SaveChangesAsync(cancellationToken);
         }
     }

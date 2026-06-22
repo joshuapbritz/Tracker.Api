@@ -1,20 +1,21 @@
 using MediatR;
-using Tracker.Domain.Events;
-using Tracker.Application.Abstractions;
+using Tracker.Domain.Entities.Events;
+using Tracker.Domain.Abstractions;
+using Tracker.Domain.Settings;
 
 namespace Tracker.Application.Events.Outgoing
 {
-    public sealed class OutgoingEventsHandler(ISettingsProvider settings, IEventsRepository eventsRepository)
+    public sealed class OutgoingEventsHandler(DefaultQueryOptions options, IEventsRepository eventsRepository)
                 : IRequestHandler<OutgoingEventsQuery, OutgoingEventsResult>
     {
         private readonly IEventsRepository _eventsRepository = eventsRepository;
-        private readonly ISettingsProvider _settings = settings;
+        private readonly DefaultQueryOptions _options = options;
 
         public async Task<OutgoingEventsResult> Handle(
             OutgoingEventsQuery command,
             CancellationToken cancellationToken)
         {
-            int pageSize = command.PageSize ?? _settings.DefaultQueryOptions.PageSize;
+            int pageSize = command.PageSize ?? _options.PageSize;
             int pageNumber = command.PageNumber ?? 1;
             int skip = (pageNumber - 1) * pageSize;
 

@@ -1,6 +1,6 @@
-using Tracker.Domain.Events;
+using Tracker.Domain.Entities.Events;
 
-namespace Tracker.Application.Abstractions
+namespace Tracker.Domain.Abstractions
 {
     public interface IEventsRepository
     {

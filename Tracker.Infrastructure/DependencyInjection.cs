@@ -1,10 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Tracker.Application.Abstractions;
+using Tracker.Domain.Abstractions;
 using Tracker.Infrastructure.Persistence;
 using Tracker.Infrastructure.Persistence.Repositories;
-using Tracker.Infrastructure.Settings;
+using Tracker.Domain.Settings;
+using Microsoft.Extensions.Options;
+// using Tracker.Infrastructure.Settings;
 
 namespace Tracker.Infrastructure
 {
@@ -14,14 +16,19 @@ namespace Tracker.Infrastructure
             this IServiceCollection services,
             IConfiguration configuration)
         {
-            services.AddSettings();
+            services.AddSettings(configuration);
             services.AddPersistence(configuration);
             return services;
         }
 
-        private static IServiceCollection AddSettings(this IServiceCollection services)
+        private static IServiceCollection AddSettings(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton<ISettingsProvider, SettingsProvider>();
+            services.AddOptionsWithValidateOnStart<DefaultQueryOptions>()
+                .Bind(configuration.GetSection(DefaultQueryOptions.SectionName))
+                .Validate(options => options.ValidateSettings());
+
+            services.AddSingleton(s => s.GetRequiredService<IOptions<DefaultQueryOptions>>().Value);
+
             return services;
         }
 

@@ -1,4 +1,4 @@
-namespace Tracker.Domain.Events
+namespace Tracker.Domain.Entities.Events
 {
     public sealed class TrackerEvent
     {

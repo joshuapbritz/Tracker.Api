@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Tracker.Domain.Events;
+using Tracker.Domain.Entities.Events;
 
 namespace Tracker.Infrastructure.Persistence
 {
