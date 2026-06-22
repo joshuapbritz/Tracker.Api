@@ -1,5 +1,5 @@
 using MediatR;
-using Tracker.Domain.Events;
+using Tracker.Domain.Entities.Events;
 
 namespace Tracker.Application.Events.Incoming
 {
