@@ -10,11 +10,8 @@ namespace Tracker.Domain.Entities.Events
 
         public TrackerEvent(string eventName, DateTime eventTimestamp, string eventSource)
         {
-            if (string.IsNullOrWhiteSpace(eventName))
-                throw new ArgumentException("Event name is required.", nameof(eventName));
-
-            if (string.IsNullOrWhiteSpace(eventSource))
-                throw new ArgumentException("Event source is required.", nameof(eventSource));
+            ArgumentException.ThrowIfNullOrWhiteSpace(eventName);
+            ArgumentException.ThrowIfNullOrWhiteSpace(eventSource);
 
             Id = Guid.NewGuid();
             EventName = eventName;

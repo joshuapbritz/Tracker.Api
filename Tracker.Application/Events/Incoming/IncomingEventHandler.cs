@@ -4,6 +4,7 @@ using Tracker.Domain.Abstractions;
 
 namespace Tracker.Application.Events.Incoming
 {
+
     public sealed class IncomingEventHandler(IEventsRepository eventsRepository)
                 : IRequestHandler<IncomingEventCommand, IncomingEventResult>
     {

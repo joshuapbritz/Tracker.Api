@@ -1,4 +1,4 @@
-using Tracker.Api.Handlers;
+using Tracker.Api.ExceptionHandlers;
 using Tracker.Application.Events.Incoming;
 using Tracker.Infrastructure;
 
