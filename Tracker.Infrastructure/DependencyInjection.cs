@@ -32,7 +32,7 @@ namespace Tracker.Infrastructure
             if (string.IsNullOrWhiteSpace(connectionString))
                 throw new InvalidOperationException("Connection string 'TrackerDb' is required.");
 
-            services.AddDbContext<TrackerDbContext>(options =>
+            services.AddDbContextPool<TrackerDbContext>(options =>
                 options.UseNpgsql(connectionString));
 
             services.AddScoped<IEventsRepository, EventsRepository>();
